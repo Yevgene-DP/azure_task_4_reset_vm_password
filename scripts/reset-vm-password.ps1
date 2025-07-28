@@ -7,15 +7,15 @@ param(
 
 Write-Host "🔄 Resetting password for VM $VMName in resource group $ResourceGroupName..."
 
-Set-AzVMAccessExtension `
-  -ResourceGroupName "mate-azure-task-2" `
-  -VMName "myVM-new" `
-  -Name "enablevmaccess" `
-  -Location "uksouth" `
-  -UserName "wroot" `
-  -Password "viktor33" `
-  -TypeHandlerVersion "1.5" `
-  -Publisher "Microsoft.OSTCExtensions" `
-  -Type "VMAccessForLinux"
+Set-AzVMAccessExtension -ResourceGroupName $ResourceGroupName `
+                        -VMName $VMName `
+                        -Name "resetAccess" `
+                        -Location "uksouth" `
+                        -UserName $UserName `
+                        -Password $Password `
+                        -Publisher "Microsoft.OSTCExtensions" `
+                        -Type "VMAccessForLinux" `
+                        -TypeHandlerVersion "1.5"
 
 Write-Host "✅ Password reset complete."
+
